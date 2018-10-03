@@ -5,21 +5,27 @@ using UnityEngine;
 public class PlayerCharacter : MonoBehaviour
 {
     [SerializeField]
+    private Rigidbody2D rb2d;
+    [SerializeField]
+    private float speed = 5;
+   
+
     private float horizontalInput;
-
-    private Rigidbody2D PlayerCharacter;
-
-	// Use this for initialization
+	
 	void Start ()
     {
 		
 	}
 	
-	// Update is called once per frame
+	
 	void Update ()
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
-        
 	}
+    private void FixedUpdate()
+    {
+        rb2d.AddForce(Vector2.right * horizontalInput * speed);
+        
+    }
 }
