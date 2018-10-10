@@ -207,7 +207,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 378262792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.391, y: -4.5, z: 0}
+  m_LocalPosition: {x: -0.391, y: -4.57, z: 0}
   m_LocalScale: {x: 9.332608, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -334,7 +334,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 616695247}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: acd7fa982c2cbd34ebace83086d2a52b, type: 2}
+  m_Material: {fileID: 6200000, guid: 0a39a662303d34848bc039434c112b2c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -420,10 +420,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5697f33e352ca1f4bbcdb72b8faea4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb2d: {fileID: 616695248}
-  accelerationForce: 50
-  jumpForce: 5
+  accelerationForce: 75
+  jumpForce: 7
   maxSpeed: 5
+  rb2d: {fileID: 616695248}
+  playerGroundCollider: {fileID: 616695249}
+  playerMovingPhysicsMaterial: {fileID: 6200000, guid: 89fc255ef1cfa9043bad9241685bbae8,
+    type: 2}
+  playerStoppingPhysicsMaterial: {fileID: 6200000, guid: 0a39a662303d34848bc039434c112b2c,
+    type: 2}
   groundDetectTrigger: {fileID: 616695253}
   groundContactFilter:
     useTriggers: 0
@@ -451,9 +456,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.27}
+  m_Offset: {x: 0, y: -0.32238996}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.2128923
 --- !u!1 &923594770
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +528,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 923594770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.09, y: -4.5, z: 0}
+  m_LocalPosition: {x: -18.06, y: -4.5, z: 0}
   m_LocalScale: {x: 26.083906, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -648,7 +653,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1296593646}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.629, y: -4.5, z: 0}
+  m_LocalPosition: {x: 8.629, y: -4.57, z: 0}
   m_LocalScale: {x: 8.632083, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

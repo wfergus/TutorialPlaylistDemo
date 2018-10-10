@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    [SerializeField]
-    private Rigidbody2D rb2d;
 
     [SerializeField]
     private float accelerationForce = 5;
@@ -17,6 +15,15 @@ public class PlayerCharacter : MonoBehaviour
     private float maxSpeed = 5;
 
     [SerializeField]
+    private Rigidbody2D rb2d;
+
+    [SerializeField]
+    private Collider2D playerGroundCollider;
+
+    [SerializeField]
+    private PhysicsMaterial2D playerMovingPhysicsMaterial, playerStoppingPhysicsMaterial;
+
+    [SerializeField]
     private Collider2D groundDetectTrigger;
 
     [SerializeField]
@@ -26,7 +33,6 @@ public class PlayerCharacter : MonoBehaviour
     private bool isOnGround;
     private Collider2D[] groundHitDetectionResults = new Collider2D[16];
     
-
     void Update ()
     {
         UpdateIsOnGround();
@@ -34,26 +40,41 @@ public class PlayerCharacter : MonoBehaviour
         HandleJumpInput();
     }
 
+    private void FixedUpdate()
+    {
+        UpdatePhysicsMaterial();
+        Move();
+    }
+
+    private void UpdatePhysicsMaterial()
+    {
+        if (Mathf.Abs(horizontalInput) > 0)
+        {
+            playerGroundCollider.sharedMaterial = playerMovingPhysicsMaterial;
+        }
+        else
+        {
+            playerGroundCollider.sharedMaterial = playerStoppingPhysicsMaterial;
+        }
+    }
+
     private void UpdateHorizontalInput()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxisRaw("Horizontal");
     }
+
     private void UpdateIsOnGround()
     {
        isOnGround = groundDetectTrigger.OverlapCollider(groundContactFilter, groundHitDetectionResults) > 0;
        // Debug.Log("IsOnGround?: " + isOnGround);
     }
+
     private void HandleJumpInput()
     {
         if (Input.GetButtonDown("Jump") && isOnGround)
         {
             rb2d.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-    }
-
-    private void FixedUpdate()
-    {
-        Move();
     }
 
     private void Move()
